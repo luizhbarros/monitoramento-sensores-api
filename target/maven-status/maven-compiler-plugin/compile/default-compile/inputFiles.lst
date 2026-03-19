@@ -1,0 +1,11 @@
+/Users/luizhbarros/projetos-fiap/monitoramento-sensores-api/src/main/java/com/fiap/mecatronica/monitoramento/MonitoramentoApplication.java
+/Users/luizhbarros/projetos-fiap/monitoramento-sensores-api/src/main/java/com/fiap/mecatronica/monitoramento/controller/MedicaoController.java
+/Users/luizhbarros/projetos-fiap/monitoramento-sensores-api/src/main/java/com/fiap/mecatronica/monitoramento/controller/SensorController.java
+/Users/luizhbarros/projetos-fiap/monitoramento-sensores-api/src/main/java/com/fiap/mecatronica/monitoramento/dto/MedicaoResponse.java
+/Users/luizhbarros/projetos-fiap/monitoramento-sensores-api/src/main/java/com/fiap/mecatronica/monitoramento/model/Medicao.java
+/Users/luizhbarros/projetos-fiap/monitoramento-sensores-api/src/main/java/com/fiap/mecatronica/monitoramento/model/Sensor.java
+/Users/luizhbarros/projetos-fiap/monitoramento-sensores-api/src/main/java/com/fiap/mecatronica/monitoramento/model/StatusMedicao.java
+/Users/luizhbarros/projetos-fiap/monitoramento-sensores-api/src/main/java/com/fiap/mecatronica/monitoramento/repository/MedicaoRepository.java
+/Users/luizhbarros/projetos-fiap/monitoramento-sensores-api/src/main/java/com/fiap/mecatronica/monitoramento/repository/SensorRepository.java
+/Users/luizhbarros/projetos-fiap/monitoramento-sensores-api/src/main/java/com/fiap/mecatronica/monitoramento/service/MedicaoService.java
+/Users/luizhbarros/projetos-fiap/monitoramento-sensores-api/src/main/java/com/fiap/mecatronica/monitoramento/service/SensorService.java

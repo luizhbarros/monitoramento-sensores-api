@@ -1,0 +1,11 @@
+com/fiap/mecatronica/monitoramento/repository/MedicaoRepository.class
+com/fiap/mecatronica/monitoramento/service/SensorService.class
+com/fiap/mecatronica/monitoramento/repository/SensorRepository.class
+com/fiap/mecatronica/monitoramento/MonitoramentoApplication.class
+com/fiap/mecatronica/monitoramento/controller/SensorController.class
+com/fiap/mecatronica/monitoramento/model/StatusMedicao.class
+com/fiap/mecatronica/monitoramento/model/Sensor.class
+com/fiap/mecatronica/monitoramento/dto/MedicaoResponse.class
+com/fiap/mecatronica/monitoramento/controller/MedicaoController.class
+com/fiap/mecatronica/monitoramento/service/MedicaoService.class
+com/fiap/mecatronica/monitoramento/model/Medicao.class
