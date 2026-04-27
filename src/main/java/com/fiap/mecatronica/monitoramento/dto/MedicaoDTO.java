@@ -1,64 +1,40 @@
-package com.fiap.mecatronica.monitoramento.model;
+package com.fiap.mecatronica.monitoramento.dto;
 
 import java.time.LocalDateTime;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import com.fiap.mecatronica.monitoramento.model.Medicao;
 
-@Entity
-@Table(name = "medicoes")
-public class Medicao {
+public class MedicaoDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @ManyToOne
-    @JoinColumn(name = "area_id", nullable = false)
-    private AreaMonitoramento area;
-
-    @Column(nullable = false)
+    private Long areaId;
+    private String areaCodigo;
     private Double alturaVegetacao;
-
-    @Column(nullable = false)
     private Double densidade;
-
-    @Column(nullable = false)
     private Double temperatura;
-
-    @Column(nullable = false)
     private Double umidade;
-
     private String tipoVegetacao;
-
     private Double inclinacaoTerreno;
-
-    @Column(name = "data_coleta", nullable = false)
     private LocalDateTime dataColeta;
-
-    @Column(name = "sensor_id")
     private String sensorId;
-
     private String observacoes;
 
-    public Medicao() {
-        this.dataColeta = LocalDateTime.now();
+    public MedicaoDTO() {
     }
 
-    public Medicao(AreaMonitoramento area, Double alturaVegetacao, Double densidade,
-                   Double temperatura, Double umidade) {
-        this();
-        this.area = area;
-        this.alturaVegetacao = alturaVegetacao;
-        this.densidade = densidade;
-        this.temperatura = temperatura;
-        this.umidade = umidade;
+    public MedicaoDTO(Medicao medicao) {
+        this.id = medicao.getId();
+        this.areaId = medicao.getArea().getId();
+        this.areaCodigo = medicao.getArea().getCodigo();
+        this.alturaVegetacao = medicao.getAlturaVegetacao();
+        this.densidade = medicao.getDensidade();
+        this.temperatura = medicao.getTemperatura();
+        this.umidade = medicao.getUmidade();
+        this.tipoVegetacao = medicao.getTipoVegetacao();
+        this.inclinacaoTerreno = medicao.getInclinacaoTerreno();
+        this.dataColeta = medicao.getDataColeta();
+        this.sensorId = medicao.getSensorId();
+        this.observacoes = medicao.getObservacoes();
     }
 
     public Long getId() {
@@ -69,12 +45,20 @@ public class Medicao {
         this.id = id;
     }
 
-    public AreaMonitoramento getArea() {
-        return area;
+    public Long getAreaId() {
+        return areaId;
     }
 
-    public void setArea(AreaMonitoramento area) {
-        this.area = area;
+    public void setAreaId(Long areaId) {
+        this.areaId = areaId;
+    }
+
+    public String getAreaCodigo() {
+        return areaCodigo;
+    }
+
+    public void setAreaCodigo(String areaCodigo) {
+        this.areaCodigo = areaCodigo;
     }
 
     public Double getAlturaVegetacao() {

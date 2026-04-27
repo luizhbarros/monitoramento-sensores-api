@@ -1,124 +1,121 @@
 package com.fiap.mecatronica.monitoramento.service;
 
-import com.fiap.mecatronica.monitoramento.dto.MedicaoResponse;
-import com.fiap.mecatronica.monitoramento.model.Medicao;
-import com.fiap.mecatronica.monitoramento.model.Sensor;
-import com.fiap.mecatronica.monitoramento.model.StatusMedicao;
-import com.fiap.mecatronica.monitoramento.repository.MedicaoRepository;
-import com.fiap.mecatronica.monitoramento.repository.SensorRepository;
-import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.fiap.mecatronica.monitoramento.dto.MedicaoDTO;
+import com.fiap.mecatronica.monitoramento.model.AreaMonitoramento;
+import com.fiap.mecatronica.monitoramento.model.Medicao;
+import com.fiap.mecatronica.monitoramento.repository.AreaMonitoramentoRepository;
+import com.fiap.mecatronica.monitoramento.repository.MedicaoRepository;
 
 @Service
 public class MedicaoService {
 
-    private final MedicaoRepository medicaoRepository;
-    private final SensorRepository sensorRepository;
+    @Autowired
+    private MedicaoRepository medicaoRepository;
 
-    public MedicaoService(MedicaoRepository medicaoRepository, SensorRepository sensorRepository) {
-        this.medicaoRepository = medicaoRepository;
-        this.sensorRepository = sensorRepository;
-    }
+    @Autowired
+    private AreaMonitoramentoRepository areaRepository;
 
-    /**
-     * Registra uma nova medição
-     */
-    public MedicaoResponse registrarMedicao(Long sensorId, Double valor) {
-        Sensor sensor = sensorRepository.findById(sensorId)
-                .orElseThrow(() -> new RuntimeException("Sensor não encontrado"));
+    @Autowired
+    private AreaMonitoramentoService areaService;
 
-        if (!sensor.getAtivo()) {
-            throw new RuntimeException("Sensor está inativo");
-        }
+    private final Random random = new Random();
 
-        Medicao medicao = new Medicao(sensor, valor, LocalDateTime.now());
-        Medicao medicaoSalva = medicaoRepository.save(medicao);
-
-        return converterParaResponse(medicaoSalva);
-    }
-
-    /**
-     * Lista todas as medições com status
-     */
-    public List<MedicaoResponse> listarTodas() {
-        return medicaoRepository.findAllByOrderByDataDesc()
+    public List<MedicaoDTO> listarTodas() {
+        return medicaoRepository.findAll()
                 .stream()
-                .map(this::converterParaResponse)
+                .map(MedicaoDTO::new)
                 .collect(Collectors.toList());
     }
 
-    /**
-     * Lista medições de um sensor específico
-     */
-    public List<MedicaoResponse> listarPorSensor(Long sensorId) {
-        return medicaoRepository.findBySensorIdOrderByDataDesc(sensorId)
+    public List<MedicaoDTO> listarPorArea(Long areaId) {
+        return medicaoRepository.findByAreaIdOrderByDataColetaDesc(areaId)
                 .stream()
-                .map(this::converterParaResponse)
+                .map(MedicaoDTO::new)
                 .collect(Collectors.toList());
     }
 
-    /**
-     * Busca uma medição por ID
-     */
-    public MedicaoResponse buscarPorId(Long id) {
+    public MedicaoDTO buscarPorId(Long id) {
         Medicao medicao = medicaoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Medição não encontrada"));
-        return converterParaResponse(medicao);
+        return new MedicaoDTO(medicao);
     }
 
-    /**
-     * Calcula o status da medição baseado nos limites do sensor
-     */
-    private StatusMedicao calcularStatus(Medicao medicao) {
-        Double valor = medicao.getValor();
-        Sensor sensor = medicao.getSensor();
+    public MedicaoDTO registrarMedicao(Long areaId, Medicao medicao) {
+        AreaMonitoramento area = areaRepository.findById(areaId)
+                .orElseThrow(() -> new RuntimeException("Área não encontrada"));
 
-        // Verifica se o valor está dentro da faixa crítica (abaixo do mínimo ou acima do máximo)
-        if (valor < sensor.getLimiteMinimo() || valor > sensor.getLimiteMaximo()) {
-            return StatusMedicao.CRITICO;
+        medicao.setArea(area);
+        medicao.setDataColeta(LocalDateTime.now());
+        Medicao medicaoSalva = medicaoRepository.save(medicao);
+
+        areaService.atualizarStatusArea(areaId, medicao.getDensidade(), medicao.getAlturaVegetacao());
+
+        return new MedicaoDTO(medicaoSalva);
+    }
+
+    public MedicaoDTO simularColetaDados(Long areaId) {
+        AreaMonitoramento area = areaRepository.findById(areaId)
+                .orElseThrow(() -> new RuntimeException("Área não encontrada"));
+
+        double fatorTerreno = calcularFatorTerreno(area.getTipoTerreno());
+
+        Medicao medicao = new Medicao();
+        medicao.setArea(area);
+        medicao.setAlturaVegetacao(0.3 + (random.nextDouble() * 1.7 * fatorTerreno));
+        medicao.setDensidade(20.0 + (random.nextDouble() * 70.0));
+        medicao.setTemperatura(15.0 + (random.nextDouble() * 20.0));
+        medicao.setUmidade(30.0 + (random.nextDouble() * 60.0));
+        medicao.setInclinacaoTerreno(area.getComplexidade() != null ? area.getComplexidade() : 0.0);
+        medicao.setSensorId("SENSOR-" + area.getCodigo() + "-" + System.currentTimeMillis());
+        medicao.setDataColeta(LocalDateTime.now());
+
+        String[] tiposVegetacao = {"Gramínea", "Arbustiva", "Mista"};
+        medicao.setTipoVegetacao(tiposVegetacao[random.nextInt(tiposVegetacao.length)]);
+
+        if (medicao.getAlturaVegetacao() > 1.2) {
+            medicao.setObservacoes("Vegetação alta detectada - recomendada intervenção");
+        } else if (medicao.getDensidade() > 60) {
+            medicao.setObservacoes("Alta densidade de vegetação - monitorar crescimento");
+        } else {
+            medicao.setObservacoes("Condições normais");
         }
 
-        // Calcula a margem de alerta (10% da faixa)
-        Double faixa = sensor.getLimiteMaximo() - sensor.getLimiteMinimo();
-        Double margemAlerta = faixa * 0.10;
+        Medicao medicaoSalva = medicaoRepository.save(medicao);
 
-        // Verifica se está próximo dos limites (zona de alerta)
-        if (valor < (sensor.getLimiteMinimo() + margemAlerta) ||
-                valor > (sensor.getLimiteMaximo() - margemAlerta)) {
-            return StatusMedicao.ALERTA;
+        areaService.atualizarStatusArea(areaId, medicao.getDensidade(), medicao.getAlturaVegetacao());
+
+        return new MedicaoDTO(medicaoSalva);
+    }
+
+    public List<MedicaoDTO> simularColetaTodasAreas() {
+        return areaRepository.findAll()
+                .stream()
+                .map(area -> simularColetaDados(area.getId()))
+                .collect(Collectors.toList());
+    }
+
+    private double calcularFatorTerreno(String tipoTerreno) {
+        if (tipoTerreno == null) return 1.0;
+
+        switch (tipoTerreno.toLowerCase()) {
+            case "inclinado":
+                return 1.3;
+            case "misto":
+                return 1.15;
+            default:
+                return 1.0;
         }
-
-        return StatusMedicao.NORMAL;
     }
 
-    /**
-     * Converte Medicao para MedicaoResponse incluindo o status calculado
-     */
-    private MedicaoResponse converterParaResponse(Medicao medicao) {
-        StatusMedicao status = calcularStatus(medicao);
-        return new MedicaoResponse(
-                medicao.getId(),
-                medicao.getSensor(),
-                medicao.getValor(),
-                medicao.getData(),
-                status
-        );
-    }
-
-    /**
-     * Simula uma nova medição com valor aleatório (útil para testes)
-     */
-    public MedicaoResponse simularMedicao(Long sensorId) {
-        Sensor sensor = sensorRepository.findById(sensorId)
-                .orElseThrow(() -> new RuntimeException("Sensor não encontrado"));
-
-        // Gera um valor aleatório dentro da faixa do sensor (com possibilidade de ultrapassar)
-        Double faixa = sensor.getLimiteMaximo() - sensor.getLimiteMinimo();
-        Double valorAleatorio = sensor.getLimiteMinimo() + (Math.random() * faixa * 1.2);
-
-        return registrarMedicao(sensorId, valorAleatorio);
+    public void deletar(Long id) {
+        medicaoRepository.deleteById(id);
     }
 }

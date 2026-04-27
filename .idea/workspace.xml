@@ -5,18 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b11597fa-030b-48e3-a7c3-5f8efa0b990d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fiap/mecatronica/monitoramento/controller/MedicaoController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fiap/mecatronica/monitoramento/controller/SensorController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fiap/mecatronica/monitoramento/dto/MedicaoResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fiap/mecatronica/monitoramento/model/Medicao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fiap/mecatronica/monitoramento/model/Sensor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fiap/mecatronica/monitoramento/model/StatusMedicao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fiap/mecatronica/monitoramento/repository/MedicaoRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fiap/mecatronica/monitoramento/repository/SensorRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fiap/mecatronica/monitoramento/service/MedicaoService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fiap/mecatronica/monitoramento/service/SensorService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fiap/mecatronica/monitoramento/config/DataInitializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fiap/mecatronica/monitoramento/controller/AreaMonitoramentoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fiap/mecatronica/monitoramento/dto/AreaMonitoramentoDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fiap/mecatronica/monitoramento/dto/MedicaoDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fiap/mecatronica/monitoramento/model/AreaMonitoramento.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fiap/mecatronica/monitoramento/model/StatusVegetacao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fiap/mecatronica/monitoramento/repository/AreaMonitoramentoRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fiap/mecatronica/monitoramento/service/AreaMonitoramentoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fiap/mecatronica/monitoramento/controller/MedicaoController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fiap/mecatronica/monitoramento/controller/SensorController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fiap/mecatronica/monitoramento/dto/MedicaoResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fiap/mecatronica/monitoramento/model/Medicao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fiap/mecatronica/monitoramento/model/Medicao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fiap/mecatronica/monitoramento/model/Sensor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fiap/mecatronica/monitoramento/model/StatusMedicao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fiap/mecatronica/monitoramento/repository/MedicaoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fiap/mecatronica/monitoramento/repository/MedicaoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fiap/mecatronica/monitoramento/repository/SensorRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fiap/mecatronica/monitoramento/service/MedicaoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fiap/mecatronica/monitoramento/service/MedicaoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fiap/mecatronica/monitoramento/service/SensorService.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/fiap/mecatronica/monitoramento/MonitoramentoApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/fiap/mecatronica/monitoramento/controller/MedicaoController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/fiap/mecatronica/monitoramento/controller/SensorController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/fiap/mecatronica/monitoramento/dto/MedicaoResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/fiap/mecatronica/monitoramento/model/Medicao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/fiap/mecatronica/monitoramento/model/Sensor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/fiap/mecatronica/monitoramento/model/StatusMedicao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/fiap/mecatronica/monitoramento/repository/MedicaoRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/fiap/mecatronica/monitoramento/repository/SensorRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/fiap/mecatronica/monitoramento/service/MedicaoService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/fiap/mecatronica/monitoramento/service/SensorService.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +46,6 @@
   </component>
   <component name="EmbeddingIndexingInfo">
     <option name="cachedIndexableFilesCount" value="8" />
-    <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -64,38 +84,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "JAR Application.monitoramento-0.0.1-SNAPSHOT.jar.executor": "Run",
-    "Maven.monitoramento [clean].executor": "Run",
-    "Maven.monitoramento [install].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "SHELLCHECK.PATH": "/Users/luizhbarros/Library/Application Support/JetBrains/IntelliJIdea2025.3/plugins/Shell Script/shellcheck",
-    "Shell Script.mvnw.executor": "Run",
-    "Spring Boot.MonitoramentoApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/luizhbarros/projetos-fiap/monitoramento-sensores-api",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;JAR Application.monitoramento-0.0.1-SNAPSHOT.jar.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.monitoramento [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.monitoramento [install].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHELLCHECK.PATH&quot;: &quot;/Users/luizhbarros/Library/Application Support/JetBrains/IntelliJIdea2025.3/plugins/Shell Script/shellcheck&quot;,
+    &quot;Shell Script.mvnw.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.MonitoramentoApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/luizhbarros/projetos-fiap/monitoramento-sensores-api&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager">
+}</component>
+  <component name="RunManager" selected="JAR Application.monitoramento-0.0.1-SNAPSHOT.jar">
     <configuration name="monitoramento-0.0.1-SNAPSHOT.jar" type="JarApplication" temporary="true">
       <option name="JAR_PATH" value="$PROJECT_DIR$/monitoramento/target/monitoramento-0.0.1-SNAPSHOT.jar" />
       <method v="2" />
@@ -124,7 +144,6 @@
     <attachedChunks>
       <set>
         <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.31033.145" />
-        <option value="bundled-js-predefined-d6986cc7102b-9b0f141eb926-JavaScript-IU-253.31033.145" />
       </set>
     </attachedChunks>
   </component>
